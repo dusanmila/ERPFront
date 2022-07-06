@@ -8,80 +8,48 @@
       <div class="l">
         <h1 class="mainHeading">Admin Dashboard</h1>
       </div>
-      <div class="menu" style="display:flex;">
-
-        <div class="fadeIn second">
-
-          <div class="item2 " (click)="openDialog(1)">
-            Analytics
-          </div>
-        </div>
-
-
-        <div class="fadeIn second item2"  (click)="logout()">
-           Log out
-
-        </div>
-        
-      </div>
+   
 
     </div>
 
 
 
   </div>
+  <br>
+  <br>
+  <button [routerLink]="['/product']">Logout</button>
   <br>
   <br>
   <br>
   <br>
   <div class="fadeIn second">
-    <h2 class="heading">Users</h2>
-    <app-user></app-user>
+   
+    <app-order></app-order>
   </div>
+
+  <br>
+  <br>
+
+  <br>
 
   <div class="fadeIn third">
-    <h2 class="heading">Objects</h2>
-    <app-object [isAdmin]="true"></app-object>
+   
+    <app-product></app-product>
   </div>
 
+  
+  <br>
+  <br>
+
+  <br>
+  <h1>Users</h1>
+  <br>
   <div class="fadeIn third">
-    <h2 class="heading">Retailers</h2>
-    <app-retailer></app-retailer>
+  <app-user></app-user>
+  
   </div>
 
 
 
-  <div class="fadeIn third">
-    <h2 class="heading">Import Excel</h2>
-
-
-
-    <div class="parentcontainer" style="margin-bottom: 5%;">
-
-      <div class="container">
-        <h3 class="uploadHeading " style="color:#56baed;">Objects</h3>
-        <input type="file" #fileDropRef (change)="uploadObjectsFile($event)" id="fileDropRef" />
-
-
-        <h3 style="margin:5%;color:#56baed;">Drag and drop file here</h3>
-
-        <label for="fileDropRef" class="browseButton">Browse</label>
-      </div>
-
-
-
-      <div class="container">
-        <h3 class="uploadHeading " style="color:#56baed;">Positions</h3>
-        <input type="file" #fileDropRef (change)="uploadPositionsFile($event)" id="fileDropRef" />
-
-
-        <h3 style="margin:5%; color:#56baed;">Drag and drop file here</h3>
-
-        <label class="browseButton" for="fileDropRef">Browse</label>
-      </div>
-
-    </div>
-
   </div>
 
-</div>

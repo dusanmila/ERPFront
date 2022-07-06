@@ -1,0 +1,58 @@
+<div class="container mat-elevation-z8">
+  <br>
+  <h1> Porudzbine</h1>
+  <br>
+  <br>
+  <mat-table #table [dataSource]="dataSource" matSort class="mat-cell">
+
+    <ng-container matColumnDef="orderId">
+      <mat-header-cell *matHeaderCellDef mat-sort-header class="whitetext">orderId</mat-header-cell>
+      <mat-cell *matCellDef="let row">{{ row.orderId }}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="totalPrice">
+      <mat-header-cell *matHeaderCellDef mat-sort-header class="whitetext">totalPrice</mat-header-cell>
+      <mat-cell *matCellDef="let row">{{ row.totalPrice }}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="date">
+      <mat-header-cell *matHeaderCellDef mat-sort-header class="whitetext">date</mat-header-cell>
+      <mat-cell *matCellDef="let row">{{ row.date | date:'dd.MM.yyyy.' }}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="userId">
+      <mat-header-cell *matHeaderCellDef mat-sort-header class="whitetext">userId</mat-header-cell>
+      <mat-cell *matCellDef="let row">{{ row.userId }}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="resolved">
+      <mat-header-cell *matHeaderCellDef mat-sort-header class="whitetext">resolved</mat-header-cell>
+      <mat-cell *matCellDef="let row">{{ row.resolved }}</mat-cell>
+    </ng-container>
+
+
+
+
+
+    <ng-container matColumnDef="actions">
+
+      <mat-header-cell *matHeaderCellDef>
+      
+      </mat-header-cell>
+
+
+      <mat-cell *matCellDef="let row; let i=index">
+
+        <mat-icon color="primary" (click)="resolve(row)" #cb>delete</mat-icon>
+
+      </mat-cell>
+
+
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+
+
+    <mat-row style="cursor:pointer;" *matRowDef="let row; columns: displayedColumns" (click)="resolve(row)"></mat-row>
+  </mat-table>
+
+
+</div>

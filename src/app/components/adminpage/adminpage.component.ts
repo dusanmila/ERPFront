@@ -1,66 +1,36 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
-import { AnalyticsdialogComponent } from 'src/app/dialogs/analyticsdialog/analyticsdialog.component';
-import { AreYouSureDialogComponent } from 'src/app/dialogs/are-you-sure-dialog/are-you-sure-dialog.component';
-import { ObjectService } from 'src/app/Services/object.service';
-import { PositionService } from 'src/app/Services/position-service.service';
-
+import { OrderService } from 'src/app/Services/order.service';
+import { ProductService } from 'src/app/Services/product.service';
+import { ProductComponent } from '../product/product.component';
+import { UserComponent } from '../user/user.component';
 @Component({
   selector: 'app-adminpage',
   templateUrl: './adminpage.component.html',
   styleUrls: ['./adminpage.component.css']
 })
-export class AdminpageComponent implements OnInit {
+export class AdminComponent implements OnInit {
 
 
-  constructor(private objectService:ObjectService,private positionService:PositionService,public dialog:MatDialog, public router: Router) { }
+  
+  constructor(public dialog:MatDialog, public router: Router) { }
 
 
   ngOnInit(): void {
   }
-  objectsFile: any;
-  positionsFile: any;
-
-  uploadObjectsFile(event: any) {
-    this.objectsFile = event.target.files[0];
-    console.log(event.target.files[0].name);
-    let formData = new FormData();
-    formData.set('file', this.objectsFile);
-
-    this.objectService.excelImport(formData);
-  }
-
-  uploadPositionsFile(event: any) {
-    this.positionsFile = event.target.files[0];
-    console.log(event.target.files[0].name);
-    let formData = new FormData();
-    formData.set('file', this.positionsFile);
-
-    this.positionService.excelImport(formData);
-  }
 
 
-  public openDialog(flag: number) {
-    const dialogRef = this.dialog.open(AnalyticsdialogComponent);
-    dialogRef.componentInstance.flag = flag;
 
-
-  }
 
   public logout() {
-    const dialogRef = this.dialog.open(AreYouSureDialogComponent);
+    
     localStorage.setItem("jwt", "");
     localStorage.setItem("refreshToken", "");
-    dialogRef.afterClosed()
-      .subscribe(res => {
-        console.log(res)
-        if (res) {
-          this.router.navigate(['/login']);
-        }
-      }
-      )
-  }
 
+    this.router.navigate(['/login']);
+
+
+    }
 
 }

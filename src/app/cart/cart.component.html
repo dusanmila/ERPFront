@@ -1,0 +1,35 @@
+
+<div class="container mat-elevation-z8 font">
+    <br>
+  <h1 > Cart</h1>
+  <br>
+  <br>
+  <button (click)="buy()">Buy</button>
+  
+ 
+  <br>
+  <br>
+<mat-table #table [dataSource]="dataSource" matSort class="mat-cell">
+ 
+    <ng-container matColumnDef="productName">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>productName</mat-header-cell>
+      <mat-cell *matCellDef="let row">{{ row.productName }}</mat-cell>
+    </ng-container>
+ 
+    <ng-container matColumnDef="quantity">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>quantity</mat-header-cell>
+      <mat-cell *matCellDef="let row" >{{ row.quantity }}</mat-cell>
+    </ng-container>
+ 
+
+
+    
+     
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    
+  
+    <mat-row style="cursor:pointer;" *matRowDef="let row; columns: displayedColumns"></mat-row>
+
+  </mat-table>
+</div>

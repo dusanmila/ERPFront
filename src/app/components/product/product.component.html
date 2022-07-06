@@ -1,0 +1,70 @@
+<div class="container mat-elevation-z8 font">
+  <br>
+<h1 > Prodaja selotejp traka</h1>
+<br>
+<br>
+<button [routerLink]="['/login']">Log in</button>
+
+<button style="margin-left: 20px;" [routerLink]="['/cart']">Cart</button>
+<br>
+<br>
+  <mat-table #table [dataSource]="dataSource" matSort class="mat-cell">
+ 
+    <ng-container matColumnDef="name">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>name</mat-header-cell>
+      <mat-cell *matCellDef="let row">{{ row.name }}</mat-cell>
+    </ng-container>
+ 
+    <ng-container matColumnDef="price">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>price</mat-header-cell>
+      <mat-cell *matCellDef="let row" >{{ row.price }}</mat-cell>
+    </ng-container>
+ 
+    <ng-container matColumnDef="img">
+      <mat-header-cell *matHeaderCellDef mat-sort-header >img</mat-header-cell>
+      <mat-cell  *matCellDef="let row" class="table-row">
+        <img src="../../../assets/{{row.img}}.jpg" alt="SC photo" width="250" height="150" />
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="manufacturer">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>manufacturer</mat-header-cell>
+      <mat-cell *matCellDef="let row">{{ row.manufacturer }}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="productCategory">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>productCategory</mat-header-cell>
+      <mat-cell *matCellDef="let row">{{ row.productCategory }}</mat-cell>
+    </ng-container>
+
+
+
+    <ng-container matColumnDef="actions">
+
+      <mat-header-cell *matHeaderCellDef>
+        
+       
+
+      </mat-header-cell>
+        <mat-cell *matCellDef="let row; let i=index">
+
+          <mat-icon color="primary" (click)="addToCart(row)" #cb>add</mat-icon>
+
+        </mat-cell>
+      
+      
+    </ng-container>
+
+    
+     
+  
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    
+  
+    <mat-row style="cursor:pointer;" *matRowDef="let row; columns: displayedColumns"
+    ></mat-row>
+
+  </mat-table>
+
+</div>
